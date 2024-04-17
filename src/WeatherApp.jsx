@@ -14,7 +14,7 @@ function WeatherApp(){
     function getWeather(event){
         event.preventDefault()
 
-        let city = event.target.city.value
+        let city = event.target.city.value.trim()
 
         if(!city){
             alert("Please enter a city name ! ")
@@ -50,6 +50,11 @@ function WeatherApp(){
         })
 
     }
+    const monthNames = [
+      "January", "February", "March", "April", "May", "June", 
+      "July", "August", "September", "October", "November", "December"
+    ];
+
     return(
       <div className="container my-5">
         <div className="mx-auto rounded-4 border text-center text-white p-4" style={{backgroundColor: "#578bc6", maxWidth: "510px"}}>
@@ -62,8 +67,12 @@ function WeatherApp(){
               <button className="btn text-white rounded-4" type="submit">Search</button>
             </form>
 
+            <h1 className="mb-3 display-5">{new Date().getDate()} {monthNames[new Date().getMonth()]} {new Date().getFullYear()}</h1>
+
+
             <img src={weather.image} alt="weather-default" />
 
+            
             <h1 className="display-4 fw-medium">{weather.temparature} °C</h1>
             <h1 className="mb-5">{weather.city}</h1>
 
